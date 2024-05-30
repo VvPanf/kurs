@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Recipes</title>
+</head>
+<body>
+<h1>Recipe list</h1>
+<table border="separate">
+    <tr>
+        <th>№</th>
+        <th>Name</th>
+        <th>Ingredients</th>
+        <th></th>
+    </tr>
+    <tr th:each="recipe,iter : ${recipes}">
+        <td th:text="${iter.index+1}"></td>
+        <td th:text="${recipe.name}"></td>
+        <td th:text="${recipe.ingredients}"></td>
+        <td>
+            <form method="POST" th:action="@{/delete/{userId}(userId=${userId})}">
+                <input type="hidden" name="id" th:value="${recipe.id}"/>
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+</table>
+<a th:href="@{/add/{userId}(userId=${userId})}">Add</a>
+</body>
+</html>

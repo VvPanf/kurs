@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+</head>
+<body>
+<h1>Search by content</h1>
+<form method="POST" th:action="@{/}">
+    <div>
+        <input type="text" name="searchStr">
+        <button type="submit">Search</button>
+    </div>
+</form>
+<h1>Search results</h1>
+<table border="separate">
+    <tr th:each="book,iter : ${bookPage.content}">
+        <td th:text="${iter.index+1}"></td>
+        <td th:text="${book.name}"></td>
+        <td th:text="${book.year}"></td>
+        <td><a th:href="@{/info/{bookId}(bookId=${book.id})}">View</a></td>
+    </tr>
+</table>
+<a th:href="@{/add}">Add</a>
+</body>
+</html>

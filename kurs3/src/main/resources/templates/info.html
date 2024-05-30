@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Info</title>
+</head>
+<body>
+<h1>Information about a book</h1>
+<a th:href="@{/}">Back</a>
+<div>
+    Name:<span th:text="${book.name}"></span>
+</div>
+<div>
+    Year:<span th:text="${book.year}"></span>
+</div>
+<div>
+    Content:
+</div>
+<textarea contenteditable="false" cols="100" rows="30" th:text="${book.content}"></textarea>
+</body>
+</html>
